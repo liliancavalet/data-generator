@@ -16,9 +16,15 @@ def download_swagger(swagger_url, path_to_store_swagger):
     with open(path_to_store_swagger, 'w') as f:
         yaml.dump(yaml.load(swagger, Loader=yaml.SafeLoader), f)
 
-
+download_swagger('https://openbanking-brasil.github.io/areadesenvolvedor/swagger/swagger_common_apis.yaml',
+                 '../swagger-apis/api-commons.yaml')
+download_swagger('https://openbanking-brasil.github.io/areadesenvolvedor/swagger/swagger_channels_apis.yaml',
+                 '../swagger-apis/api-channels.yaml')
 download_swagger('https://openbanking-brasil.github.io/areadesenvolvedor/swagger/swagger_products_services_apis.yaml',
                  '../swagger-apis/api-products-and-services.yaml')
+download_swagger('https://openbanking-brasil.github.io/areadesenvolvedor/swagger/swagger_admin_apis.yaml',
+                 '../swagger-apis/api-admin.yaml')
+
 download_swagger('https://openbanking-brasil.github.io/areadesenvolvedor/swagger/swagger_consents_apis.yaml',
                  '../swagger-apis/api-consents.yaml')
 download_swagger('https://openbanking-brasil.github.io/areadesenvolvedor/swagger/swagger_resources_apis.yaml',
