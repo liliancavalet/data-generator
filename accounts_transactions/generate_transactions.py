@@ -96,7 +96,16 @@ for i in range(sample_number):
         if key == "transactionName":
             transaction[key] = str(transaction["transactionId"])
         if key == "amount":
-            transaction[key] = float("{0:.4f}".format(transaction[key] * uniform(0.01, 1 / sample_number)))
+            # Determines the transacation amount
+            if transaction["creditDebitType"] == "DEBITO":
+                # Defines the amount to be debited from the persona's account
+                amount = uniform(available_amount*0.3, available_amount*0.7)
+                available_amount = available_amount - amount
+            else:
+                # Defines the amount to be credited into the persona's account
+                amount = uniform(available_amount * 0.7, available_amount)
+                available_amount = available_amount + amount
+            transaction[key] = float(format(amount, '.4f'))
     transactions.append(transaction)
 # Create the file to store list of transactions
 f = open(path_to_store_json, 'w')
