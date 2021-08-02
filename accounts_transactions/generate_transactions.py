@@ -1,6 +1,7 @@
 import json
 import uuid
 import datetime
+from operator import itemgetter
 from random import randrange, randint, uniform
 
 # ----------------------------------------------------------------------------------------
@@ -63,7 +64,7 @@ def _random_date(start_date, end_date):
 # Generates the list of transactions
 transactions = []
 for i in range(sample_number):
-    transaction = {"amount": available_amount}
+    transaction = {}
     for key in keys:
         if key == "partieCompeCode":
             transaction[key] = compe_code
@@ -107,6 +108,7 @@ for i in range(sample_number):
                 available_amount = available_amount + amount
             transaction[key] = float(format(amount, '.4f'))
     transactions.append(transaction)
+transactions = sorted(transactions, key=itemgetter("transactionDate"), reverse=True)
 # Create the file to store list of transactions
 f = open(path_to_store_json, 'w')
 # Add the JSON to the file
