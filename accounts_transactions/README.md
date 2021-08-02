@@ -2,9 +2,9 @@
 
 ### Pre requisites
 
-- `python3` installed
-- this repository cloned in your machine
-- a virtual environment for the cloned repository
+:snake: `python3` installed  
+:octocat: this repository cloned in your machine  
+:framed_picture: a virtual environment for the repository 
 
 ## :arrow_forward: How to execute
 
